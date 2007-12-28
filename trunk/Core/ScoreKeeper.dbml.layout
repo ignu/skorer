@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ScoreKeeper">
+  <DataContextMoniker Name="/ScoreKeeperDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b7978537-21a3-4cb3-a4c1-e5b2ed445608" absoluteBounds="1, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ScoreKeeperDataContext/Game" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e68a77a4-5f71-47e1-a4e0-c5f0f8b19ab4" absoluteBounds="1.0150000000000001, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="42e180af-7310-4841-979a-0f191e651f2d" absoluteBounds="3.875, 0.5, 2.25, 1.9631982421874996">
+      <DataClassMoniker Name="/ScoreKeeperDataContext/GameEvent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c952467-3488-42ce-b74b-3d3e7ade4a90" absoluteBounds="3.8899999999999997, 0.96, 2.2199999999999998, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3 : 1.44314697265625); (3.875 : 1.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ScoreKeeperDataContext/Game/Game_GameEvent" />
+      <nodes>
+        <classShapeMoniker Id="b7978537-21a3-4cb3-a4c1-e5b2ed445608" />
+        <classShapeMoniker Id="42e180af-7310-4841-979a-0f191e651f2d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c8ea5a91-4d57-4df5-87d3-5737bde9955c" absoluteBounds="3.75, 4.875, 2.25, 1.5785953776041666">
+      <DataClassMoniker Name="/ScoreKeeperDataContext/Player" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba3aba44-e5e0-4182-8e04-0bff26e6eb51" absoluteBounds="3.7649999999999997, 5.335, 2.2199999999999998, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cc8959e0-3618-44ea-97ee-7a3e11b5fa26" absoluteBounds="1, 2.5, 2.125, 1.3862939453125">
+      <DataClassMoniker Name="/ScoreKeeperDataContext/Match" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0872a15e-5a0f-4f36-9b97-3fd30f032d32" absoluteBounds="1.015, 2.96, 2.0949999999999998, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2 : 2.1362939453125); (2 : 2.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ScoreKeeperDataContext/Game/Game_Match" />
+      <nodes>
+        <classShapeMoniker Id="b7978537-21a3-4cb3-a4c1-e5b2ed445608" />
+        <classShapeMoniker Id="cc8959e0-3618-44ea-97ee-7a3e11b5fa26" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="0321aa07-2989-4322-8310-e8228c73e80e" absoluteBounds="1, 4.125, 2.125, 1.3862939453125">
+      <DataClassMoniker Name="/ScoreKeeperDataContext/MatchParticipant" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a88f965b-08ba-4543-8d18-021dfe7af14c" absoluteBounds="1.015, 4.585, 2.0949999999999998, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.0625 : 3.8862939453125); (2.0625 : 4.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ScoreKeeperDataContext/Match/Match_MatchParticipant" />
+      <nodes>
+        <classShapeMoniker Id="cc8959e0-3618-44ea-97ee-7a3e11b5fa26" />
+        <classShapeMoniker Id="0321aa07-2989-4322-8310-e8228c73e80e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.75 : 5.19314697265625); (3.125 : 5.19314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ScoreKeeperDataContext/Player/Player_MatchParticipant" />
+      <nodes>
+        <classShapeMoniker Id="c8ea5a91-4d57-4df5-87d3-5737bde9955c" />
+        <classShapeMoniker Id="0321aa07-2989-4322-8310-e8228c73e80e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="eaa55c61-4e3b-46b3-9c9a-5b35add68437" absoluteBounds="3.875, 2.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ScoreKeeperDataContext/MatchEvent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="046e92ff-1849-4243-a865-f03d3c76d7f9" absoluteBounds="3.8899999999999997, 3.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.875 : 2.4631982421875); (4.875 : 2.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ScoreKeeperDataContext/GameEvent/GameEvent_MatchEvent" />
+      <nodes>
+        <classShapeMoniker Id="42e180af-7310-4841-979a-0f191e651f2d" />
+        <classShapeMoniker Id="eaa55c61-4e3b-46b3-9c9a-5b35add68437" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.125 : 3.31814697265625); (3.875 : 3.31814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ScoreKeeperDataContext/Match/Match_MatchEvent" />
+      <nodes>
+        <classShapeMoniker Id="cc8959e0-3618-44ea-97ee-7a3e11b5fa26" />
+        <classShapeMoniker Id="eaa55c61-4e3b-46b3-9c9a-5b35add68437" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.875 : 4.875); (4.875 : 4.7131982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ScoreKeeperDataContext/Player/Player_MatchEvent" />
+      <nodes>
+        <classShapeMoniker Id="c8ea5a91-4d57-4df5-87d3-5737bde9955c" />
+        <classShapeMoniker Id="eaa55c61-4e3b-46b3-9c9a-5b35add68437" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
