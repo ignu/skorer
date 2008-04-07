@@ -22,6 +22,7 @@ matchEvent.Score = matchEvent.Quantity * matchEvent.GameEvent.Points
 if frame.GetScoreFor(bowler) == 10:
 	if frame.GetEventsFor(bowler).Count == 1: 		
 		AddEvent("StrikeBonus", bowler, 0)		 		
+		
 	elif frame.GetEventsFor(bowler).Count == 2:		
 		AddEvent("SpareBonus", bowler, 0) 
 		
