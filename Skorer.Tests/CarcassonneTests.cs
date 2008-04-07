@@ -30,15 +30,14 @@ namespace Skorer.Tests
             Player Megatron = new Player() { Name = "Megatron"  };
             Player Optimus = new Player() { Name = "Optimus" };
             
-            Scorer scorer = new  ScorerFactory(new GameFactory())
-                .GetScorerFor("Carcassonne");
-            scorer.AddParticipant(Megatron)
-                .AddParticipant(Optimus);
+            Scorer scorer = new  ScorerFactory(new GameFactory()).GetScorerFor("Carcassonne");
             
-            scorer.AddEvent(scorer.Game.Events.Find(m => m.Name == "Completed City"), Megatron, 4);
-            scorer.AddEvent(scorer.Game.Events.Find(m => m.Name == "Complete City With Cathedral"), Megatron, 5);
-            scorer.AddEvent(scorer.Game.Events.Find(m => m.Name == "Road"), Megatron, 9);
-            scorer.AddEvent(scorer.Game.Events.Find(m => m.Name == "Farmed City w/ Pig"), Optimus, 7);
+            scorer.AddParticipant(Megatron).AddParticipant(Optimus);
+            
+            scorer.AddEvent("Completed City", Megatron, 4);
+            scorer.AddEvent("Complete City With Cathedral", Megatron, 5);
+            scorer.AddEvent("Road", Megatron, 9);
+            scorer.AddEvent("Farmed City w/ Pig", Optimus, 7);
 
             int megaTronScore = (4 * 2) +(5 * 3) + 9;
             int optimusScore = 7 * 5;

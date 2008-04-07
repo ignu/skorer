@@ -181,6 +181,8 @@ namespace Skorer.Services
 
         protected void NewRound(Player player)
         {
+            if (!_Game.DistinctPlayerRounds)
+                throw new InvalidOperationException("You can not get a round by player in this game");
             playerRounds[player] = playerRounds[player] + 1;            
         }
 
