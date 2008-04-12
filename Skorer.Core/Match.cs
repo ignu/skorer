@@ -6,8 +6,8 @@ using System.Diagnostics;
 
 namespace Skorer.Core
 {
-    [DebuggerDisplay("Game: {Game.Name} ({Date})")]
-    public class Match
+    [DebuggerDisplay("Match: {Game.Name} ({Date})")]
+    public class Match : Entity<int>
     {
         public Game Game { get; set; }
 

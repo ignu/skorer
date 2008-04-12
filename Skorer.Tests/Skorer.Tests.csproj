@@ -103,6 +103,8 @@
     <Compile Include="MatchTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GameTests.cs" />
+    <Compile Include="Repository\MatchTests.cs" />
+    <Compile Include="Repository\PlayerTests.cs" />
     <Compile Include="ScorerTests.cs" />
   </ItemGroup>
   <ItemGroup>
