@@ -6,6 +6,9 @@ using System.Collections;
 using Castle.Windsor;
 using Castle.Windsor.Configuration.Interpreters;
 using Castle.Core.Resource;
+using System.IO;
+using Rhino.Commons;
+using Rhino.Commons.Binsor;
 
 namespace Skorer.IOC
 {
@@ -38,10 +41,12 @@ namespace Skorer.IOC
 
         private static void _Initialize()
         {
-            _Container = _Load(
-                String.Format(
-                    "assembly://{0}/Windsor.config",
-                    typeof(Container).Assembly.GetName().Name));
+            _Container = new WindsorContainer();
+            Stream stream = 
+                System.Reflection.Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream("Skorer.IOC.Windsor.boo");
+            
+            BooReader.Read(_Container, stream, "Windsor");
         }
 
         private static WindsorContainer _Load(string configFile)

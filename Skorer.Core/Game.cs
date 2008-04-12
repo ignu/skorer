@@ -5,26 +5,26 @@ using System.Text;
 
 namespace Skorer.Core
 {
-    public abstract class Game
+    public class Game : Entity<int>
     {        
-        public abstract void Prepare();
+        public virtual void Prepare() {}
 
-        public string Name { get; set; }
-        public bool DistinctPlayerRounds { get; set; }
+        public virtual string Name { get; set; }
+        public virtual bool DistinctPlayerRounds { get; set; }
         private List<GameEvent> _Events = new List<GameEvent>();
-        public List<GameEvent> Events
-        {
+        public virtual List<GameEvent> Events
+        {            
             get
-            {
+            {                
                 return _Events;                
             }
             set
             {
                 _Events = value;
             }
-        }        
+        }
 
-        public void SetName(string name)
+        public virtual void SetName(string name)
         {
             Name = name;
         }

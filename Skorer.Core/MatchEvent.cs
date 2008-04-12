@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace Skorer.Core
 {
+    [DebuggerDisplay("Game: {GameEvent.Name} Player: {Player.Name} Score: {Score}")]
     public class MatchEvent
     {
         public GameEvent GameEvent { get; set; }
@@ -14,7 +16,7 @@ namespace Skorer.Core
         public Player Player { get; set; }
         
         public int GetScore()
-        {
+        {            
             return Quantity * GameEvent.Points;
         }
     }
