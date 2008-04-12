@@ -10,7 +10,7 @@ namespace Skorer.DataAccess
     {
     }
 
-    public class GameRepository : RepositoryBase<Game, int>, IGameRepository
+    public class GameRepository : Repository<Game, int>, IGameRepository
     {
 
         public GameRepository(INHibernateSessionManager sessionManager) : base(sessionManager) { }

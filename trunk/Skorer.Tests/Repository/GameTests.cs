@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using Skorer.DataAccess;
 using Skorer.Core;
@@ -10,7 +7,7 @@ using Skorer.IOC;
 namespace Skorer.Tests.Repository
 {
     [TestFixture]
-    public class RepositoryTestBase<T> where T : IRepository, ITransactional
+    public class RepositoryTestBase<T> where T : IFlushable, ITransactional
     {
 
         internal T _Repository;
@@ -35,7 +32,7 @@ namespace Skorer.Tests.Repository
         }
     }
     [TestFixture]
-    public class Games : RepositoryTestBase<IGameRepository>
+    public class Games : RepositoryTestBase<IRepository<Game, int>>
     {
         [Test]
         public void CanSaveAndRetrieve()
@@ -45,11 +42,5 @@ namespace Skorer.Tests.Repository
             Assert.Greater(game.ID, 0);            
         }
 
-        [Test]
-        public void Test()
-        {
-            Assert.IsNotNull(Container.Resolve<INHibernateSessionManager>());
-                
-        }
     }
 }

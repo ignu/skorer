@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Skorer.Core
 {
-    public class Player
+    public class Player : Entity<int>
     {
         public string Name { get; set; }
     }

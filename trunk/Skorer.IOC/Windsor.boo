@@ -8,4 +8,4 @@ import Castle.Core
 
 Component("NHibernateSessionManager", INHibernateSessionManager, NHibernateSessionManager)
 Component("SessionManager", INHibernateSessionManager, NHibernateSessionManager)
-Component("GameRepository", IGameRepository, GameRepository)
+Component("Repository", IRepository, Repository)

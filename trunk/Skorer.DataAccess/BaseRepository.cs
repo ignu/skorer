@@ -15,12 +15,12 @@ namespace Skorer.DataAccess
             void CommitTransaction();
         }
 
-        public interface IRepository
+        public interface IFlushable
         {
             void Flush();
             void Clear();
         }
-        public interface IRepository<T, IdT> : ITransactional, IRepository
+        public interface IRepository<T, IdT> : ITransactional, IFlushable
         {
             T CreateNew();
             T GetById(IdT id);
@@ -33,14 +33,13 @@ namespace Skorer.DataAccess
             void Update(T entity);
             void Delete(T entity);
             void Evict(T entity);
-
         }
 
-        public abstract class RepositoryBase<T, IdT> : IRepository<T, IdT> where T : Entity<IdT>
+        public class Repository<T, IdT> : IRepository<T, IdT> where T : Entity<IdT>
         {
             internal INHibernateSessionManager _NHibernateSessionManager;
 
-            public RepositoryBase(INHibernateSessionManager nhibernateSessionManager)
+            public Repository(INHibernateSessionManager nhibernateSessionManager)
             {
                 this._NHibernateSessionManager = nhibernateSessionManager;
             }
