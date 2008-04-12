@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace Skorer.Core
 {
+    [DebuggerDisplay("Game: {Game.Name} ({Date})")]
     public class Match
     {
         public Game Game { get; set; }
+
         private List<Player> _Players = new List<Player>();
         public List<Player> Players
         {
@@ -16,7 +19,7 @@ namespace Skorer.Core
                 return _Players;
             }
             set
-            {
+            {                
                 _Players = value;
             }
         }
@@ -34,6 +37,16 @@ namespace Skorer.Core
             }
         }
 
+        private DateTime _Date = DateTime.Now;
+        public DateTime Date
+        {
+            get { return _Date; }
+            set
+            {
+                _Date = value;
+            }
+        }
+        
         public void AttemptScore()
         {
             

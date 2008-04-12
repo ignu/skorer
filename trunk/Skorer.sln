@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skorer.IOC", "Skorer.IOC\Sk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skorer.Services", "Skorer.Services\Skorer.Services.csproj", "{B9A4884B-5C1E-4E8C-BC52-5BA932BDE9C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skorer.DataAccess", "Skorer.DataAccess\Skorer.DataAccess.csproj", "{BC5EBC1C-622E-4F01-98F2-2440C1E66C28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{B9A4884B-5C1E-4E8C-BC52-5BA932BDE9C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A4884B-5C1E-4E8C-BC52-5BA932BDE9C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9A4884B-5C1E-4E8C-BC52-5BA932BDE9C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC5EBC1C-622E-4F01-98F2-2440C1E66C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC5EBC1C-622E-4F01-98F2-2440C1E66C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC5EBC1C-622E-4F01-98F2-2440C1E66C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC5EBC1C-622E-4F01-98F2-2440C1E66C28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
