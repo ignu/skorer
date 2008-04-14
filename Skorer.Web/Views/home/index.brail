@@ -1,0 +1,7 @@
+﻿Skorer - Scorekeeping Application
+
+Start Match<p/>
+
+<a href="/player/add.rails">Add New Player</a><br/>
+<a href="/player/edit.rails">Edit  Player</a><br/>
+<a href="/team/add.rails">Add New Team</a><br/>

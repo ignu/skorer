@@ -204,7 +204,7 @@ namespace Skorer.Services
 
         public void AddEvent(string eventName, Player player, int quantity)
         {
-            GameEvent gameEvent = _Match.Game.Events.Find(g => g.Name == eventName);
+            GameEvent gameEvent = _Match.Game.GetEvents().Find(g => g.Name == eventName);
             AddEvent(gameEvent, player, quantity);
         }
 

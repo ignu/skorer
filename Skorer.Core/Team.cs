@@ -5,7 +5,9 @@ using System.Text;
 
 namespace Skorer.Core
 {
-    public class Team
+
+    [System.Diagnostics.DebuggerDisplay("[{ID}] {Name}")]
+    public class Team : Entity<int>
     {
         public string Name { get; set; }
         public Game Game { get; set; }

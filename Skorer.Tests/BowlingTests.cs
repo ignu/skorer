@@ -16,7 +16,7 @@ namespace Skorer.Tests
         {
             Game game = new GameFactory().LoadGame("Bowling");
             Assert.AreEqual(game.Name, "Bowling");
-            Assert.Greater(game.Events.Count, 0);
+            Assert.Greater(game.GetEvents().Count, 0);
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace Skorer.Tests
 
             Scorer scorer = new ScorerFactory(new GameFactory()).GetScorerFor("Bowling");            
             scorer.AddParticipant(Megatron).AddParticipant(Optimus);
-            GameEvent throwEvent = scorer.Game.Events.Find(m => m.Name == "Throw");
+            GameEvent throwEvent = scorer.Game.GetEvents().Find(m => m.Name == "Throw");
             scorer.AddEvent(throwEvent, Megatron, 4);
             scorer.AddEvent(throwEvent, Megatron, 6);
             scorer.AddEvent(throwEvent, Optimus, 10);            

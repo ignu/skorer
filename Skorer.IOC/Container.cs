@@ -34,19 +34,30 @@ namespace Skorer.IOC
             return _Container.Resolve<T>(key, arguments);
         }
 
-        private static WindsorContainer _Container;
+        private static RhinoContainer _Container;
+        public static RhinoContainer GetContainer()
+        {
+            return _Container;
+        }
+
+        
 
         static Container()
         { _Initialize(); }
 
         private static void _Initialize()
         {
-            _Container = new WindsorContainer();
-            Stream stream = 
-                System.Reflection.Assembly.GetExecutingAssembly()
-                .GetManifestResourceStream("Skorer.IOC.Windsor.boo");
+            _Container = new RhinoContainer();           
+            //Stream stream = 
+            //    System.Reflection.Assembly.GetExecutingAssembly()
+            //    .GetManifestResourceStream("Skorer.IOC.Windsor.boo");
+            //BooReader.Read(_Container, stream, "Windsor");
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"\Windsor.boo";
+            Console.WriteLine(path);
+            BooReader.Read(_Container, path);
+
             
-            BooReader.Read(_Container, stream, "Windsor");
         }
 
         private static WindsorContainer _Load(string configFile)

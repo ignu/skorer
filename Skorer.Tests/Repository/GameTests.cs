@@ -7,40 +7,22 @@ using Skorer.IOC;
 namespace Skorer.Tests.Repository
 {
     [TestFixture]
-    public class RepositoryTestBase<T> where T : IFlushable, ITransactional
-    {
-
-        internal T _Repository;
-
-        [TestFixtureSetUp]
-        public void InitDal()
-        {
-            _Repository = Container.Resolve<T>();
-        }
-
-        [SetUp]
-        public void SetUp()
-        {
-            _Repository.StartTransaction();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            _Repository.Flush();
-            _Repository.AbandonTransaction();
-        }
-    }
-    [TestFixture]
-    public class Games : RepositoryTestBase<IRepository<Game, int>>
+    public class GameTests : RepositoryTestBase<IRepository<Game, int>>
     {
         [Test]
         public void CanSaveAndRetrieve()
         {
-            Game game = new Game { Name = "Soccer" };
+            Game game = new Game { Name = "BaseBall" };
             _Repository.Save(game);
             Assert.Greater(game.ID, 0);            
         }
 
+        [Test]
+        public void GameHasEvents()
+        {
+            Game game = _Repository.GetFirst();
+            Assert.Greater(game.Events.Count, 0);
+        }
     }
+
 }
