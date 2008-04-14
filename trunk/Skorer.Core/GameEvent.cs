@@ -5,16 +5,18 @@ using System.Text;
 
 namespace Skorer.Core
 {
-    public class GameEvent
+    [System.Diagnostics.DebuggerDisplay("[{ID}] {Name}")]
+    public class GameEvent : Entity<int>
     {
         private int _Points = 1;
         private int _QuantityInterval = 1;
         private int _MinimumQuantity = 1;
         private int _MaximumQuantity = 1000;
 
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
+        public virtual Game Game { get; set; }
 
-        public int MinimumQuantity
+        public virtual int MinimumQuantity
         {
             get
             {
@@ -26,7 +28,7 @@ namespace Skorer.Core
             }
         }
 
-        public int MaximumQuantity
+        public virtual int MaximumQuantity
         {
             get
             {
@@ -38,7 +40,7 @@ namespace Skorer.Core
             }
         }
 
-        public int Points
+        public virtual int Points
         {
             get
             {
@@ -50,7 +52,7 @@ namespace Skorer.Core
             }
         }
 
-        public int QuantityInterval
+        public virtual int QuantityInterval
         {
             get
             {

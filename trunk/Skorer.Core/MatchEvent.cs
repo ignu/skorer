@@ -7,13 +7,13 @@ using System.Diagnostics;
 namespace Skorer.Core
 {
     [DebuggerDisplay("Game: {GameEvent.Name} Player: {Player.Name} Score: {Score}")]
-    public class MatchEvent
+    public class MatchEvent : Entity<int>
     {
-        public GameEvent GameEvent { get; set; }
-        public int Quantity { get; set; }
-        public int Round { get; set; }
-        public int Score { get; set; }
-        public Player Player { get; set; }
+        public virtual GameEvent GameEvent { get; set; }
+        public virtual int Quantity { get; set; }
+        public virtual int Round { get; set; }
+        public virtual int Score { get; set; }
+        public virtual Player Player { get; set; }
         
         public int GetScore()
         {            

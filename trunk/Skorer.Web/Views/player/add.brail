@@ -1,0 +1,14 @@
+﻿<h2>New Player:</h2>
+
+  ${ConfirmationMessage}
+
+${HtmlHelper.Form('create.rails')}
+<p>
+    ${HtmlHelper.LabelFor('Player.Name','Player')}
+    ${HtmlHelper.InputText('Player.Name','',50,50)}
+  </p>
+<p>
+	${HtmlHelper.SubmitButton('Add Player', {'id': 'submit'} )}
+</p>
+${HtmlHelper.EndFieldSet()}
+${HtmlHelper.EndForm()}
