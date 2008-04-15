@@ -108,6 +108,7 @@
     <Compile Include="BowlingTests.cs" />
     <Compile Include="BuildDataBase.cs" />
     <Compile Include="CarcassonneTests.cs" />
+    <Compile Include="Controllers\MatchControllerTests.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="MatchTests.cs" />
     <Compile Include="Performance\PerformanceTests.cs" />
