@@ -10,9 +10,12 @@ import Castle.MonoRail.Framework
 import Skorer.Web
 import Skorer.Web.Controllers
 
-
 Facility( "rails", MonoRailFacility )
-	
+
+Component("NHibernateSessionManager", INHibernateSessionManager, NHibernateSessionManager)
+Component("SessionManager", INHibernateSessionManager, NHibernateSessionManager)
+Component("Repository", IRepository, Repository)
+
 webAsm = Assembly.Load("Skorer.Web")
 
 for type in webAsm.GetTypes():
@@ -22,11 +25,6 @@ for type in webAsm.GetTypes():
 		Component(type.Name, type)
 	elif typeof(ViewComponent).IsAssignableFrom(type):
 		Component(type.Name, type)
-
-
-Component("NHibernateSessionManager", INHibernateSessionManager, NHibernateSessionManager)
-Component("SessionManager", INHibernateSessionManager, NHibernateSessionManager)
-Component("Repository", IRepository, Repository)
 
 #Component("home.controller", HomeController)
 #Component("player.controller", PlayerController)

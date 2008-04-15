@@ -1,0 +1,12 @@
+﻿
+<h2>Start Match:</h2>
+
+
+<form action="start.rails" method="post">
+  <p>
+    ${FormHelper.Select("GameId", Games, {@value: @Id, @text: @Name, @firstoption: 'Select Game...'})}
+  </p>
+  <p>
+    ${HtmlHelper.SubmitButton('Add Player', {'id': 'submit'} )}
+  </p>
+</form>

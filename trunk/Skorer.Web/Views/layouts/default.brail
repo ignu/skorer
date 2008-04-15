@@ -5,7 +5,16 @@
 <head>	
 	<title>Skorer</title>	
 </head>
-<body>	
+<body
+	
 	${ChildOutput}
+	
+<div style="float:right;">
+	<a href="/match/start.rails">Start Match</a><br/>
+	<a href="/player/add.rails">Add New Player</a><br/>
+	<a href="/player/edit.rails">Edit  Player</a><br/>
+	<a href="/team/add.rails">Add New Team</a><br/>
+</div>
+	
 </body>
 </html>

@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -120,6 +121,8 @@
   <ItemGroup>
     <None Include="Views\home\index.brail" />
     <None Include="Views\layouts\default.brail" />
+    <None Include="Views\match\addplayers.brail" />
+    <None Include="Views\match\create.brail" />
     <None Include="Views\player\add.brail" />
     <None Include="Windsor.boo" />
   </ItemGroup>
