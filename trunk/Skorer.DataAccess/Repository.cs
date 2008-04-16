@@ -39,6 +39,11 @@ namespace Skorer.DataAccess
         {
             internal INHibernateSessionManager _NHibernateSessionManager;
 
+            protected ICriteria CreateCriteria()
+            {
+                return _NHibernateSessionManager.GetSession().CreateCriteria(typeof(T));
+            }
+
             public Repository(INHibernateSessionManager nhibernateSessionManager)
             {
                 this._NHibernateSessionManager = nhibernateSessionManager;

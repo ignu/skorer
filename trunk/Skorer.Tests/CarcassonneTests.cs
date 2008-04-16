@@ -27,8 +27,8 @@ namespace Skorer.Tests
         [Test]
         public void CanScoreCity()
         {            
-            Player Megatron = new Player() { Name = "Megatron"  };
-            Player Optimus = new Player() { Name = "Optimus" };
+            Player Megatron = new Player() { FirstName = "Megatron"  };
+            Player Optimus = new Player() { FirstName = "Optimus" };
             
             Scorer scorer = new  ScorerFactory(new GameFactory()).GetScorerFor("Carcassonne");
             

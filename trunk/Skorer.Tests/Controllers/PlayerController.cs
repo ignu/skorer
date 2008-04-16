@@ -29,7 +29,7 @@ namespace Skorer.Tests.Controllers
         [Test]
         public void Can_Add_Player()
         {            
-            Player player = new Player { Name = "Optimus" };
+            Player player = new Player { FirstName = "Optimus" };
             _RepositoryMock.Expect(r => r.Save(player)).Returns(player);
             _Controller.Create(player);
         }

@@ -27,7 +27,7 @@ namespace Skorer.Web.Controllers
         public void Create([DataBind("Player")] Player player)
         {
             _PlayerRepository.Save(player);                        
-            ConfirmationMessage = "Added Player: " + player.Name;
+            ConfirmationMessage = "Added Player: " + player.FirstName;
             RedirectToAction("Add");
         }
 

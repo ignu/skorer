@@ -30,7 +30,7 @@ namespace Skorer.Tests
         [Test]
         public void Can_Add_Participant()
         {
-            Player player = new Player() { Name = "Len" };
+            Player player = new Player() { FirstName = "Len" };
             _Scorer.AddParticipant(player);
             Assert.IsNotEmpty(_Scorer.Players);
         }

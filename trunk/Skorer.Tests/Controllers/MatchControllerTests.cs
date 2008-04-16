@@ -53,7 +53,7 @@ namespace Skorer.Tests.Controllers
             Match newMatch = new Match { ID = 0, Game = game };
             _Controller.Context.Session["Match"] = newMatch;
 
-            Player player = new Player { Name = "Tony" } ;
+            Player player = new Player { FirstName = "Tony" } ;
             
             _PlayerRepositoryMock.Expect(p => p.GetById(2)).Returns(player);
             _PlayerRepositoryMock.Expect(p => p.Save(player)).Returns(player);

@@ -5,8 +5,7 @@ using Skorer.Core;
 using Skorer.IOC;
 
 namespace Skorer.Tests.Repository
-{
-    [TestFixture]
+{    
     public class RepositoryTestBase<T> where T : IFlushable, ITransactional
     {
 

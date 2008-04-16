@@ -116,7 +116,7 @@
     <Compile Include="Repository\GameTests.cs" />
     <Compile Include="Repository\MatchEventTests.cs" />
     <Compile Include="Repository\MatchTests.cs" />
-    <Compile Include="Repository\PlayerTests.cs" />
+    <Compile Include="Repository\PlayerRepositoryTests.cs" />
     <Compile Include="Repository\RepositoryTestBase.cs" />
     <Compile Include="ScorerTests.cs" />
   </ItemGroup>
