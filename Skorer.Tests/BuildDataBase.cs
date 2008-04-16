@@ -33,9 +33,9 @@ namespace Skorer.Tests
         private static void _AddPlayers()
         {
             Container.Resolve<IRepository<Player, int>>().Save(
-                            new Player { Name = "Optimus" });
+                            new Player { FirstName = "Optimus", LastName="Prime" });
             Container.Resolve<IRepository<Player, int>>().Save(
-                            new Player { Name = "Megatron" });
+                            new Player { FirstName = "Mega", LastName="Tron" });
         }
 
         private static void _AddGame()

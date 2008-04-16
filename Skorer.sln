@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skorer.DataAccess", "Skorer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skorer.Web", "Skorer.Web\Skorer.Web.csproj", "{173DC9F7-0418-4AC6-AF09-59A6DD1046B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skorer.WinForms", "Skorer.WinForms\Skorer.WinForms.csproj", "{D6BC284A-C22B-4E35-9228-0BC53DE2FCC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{173DC9F7-0418-4AC6-AF09-59A6DD1046B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{173DC9F7-0418-4AC6-AF09-59A6DD1046B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{173DC9F7-0418-4AC6-AF09-59A6DD1046B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6BC284A-C22B-4E35-9228-0BC53DE2FCC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6BC284A-C22B-4E35-9228-0BC53DE2FCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6BC284A-C22B-4E35-9228-0BC53DE2FCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6BC284A-C22B-4E35-9228-0BC53DE2FCC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

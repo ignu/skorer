@@ -52,7 +52,7 @@ namespace Skorer.Web.Controllers
                 throw new InvalidOperationException("There is no current Match");
         }
 
-        private static Match _SessionMatch()
+        private  Match _SessionMatch()
         {
             return ((Match)Session["Match"]);
         }
