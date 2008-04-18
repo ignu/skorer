@@ -11,5 +11,6 @@ Component("NHibernateSessionManager", INHibernateSessionManager, NHibernateSessi
 Component("SessionManager", INHibernateSessionManager, NHibernateSessionManager)
 Component("Repository", IRepository, Repository)
 Component("DefaultView", IDefaultView, MainWindow)
+Component("MatchForm", IMatchView, MatchForm)
 
 Component("PlayerRepository", IPlayerRepository, PlayerRepository)
