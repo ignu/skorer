@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Skorer.DataAccess;
 using Skorer.Core;
+using Skorer.Services;
 
 namespace Skorer.WinForms
 {
@@ -44,7 +45,8 @@ namespace Skorer.WinForms
 
         void toolStripItem_Click(object sender, EventArgs e)
         {
-            MatchForm newMatchForm = (MatchForm)Skorer.IOC.Container.Resolve<IMatchView>();
+            MatchForm newMatchForm = new MatchForm(Skorer.IOC.Container.Resolve<IGameRepository>(),
+                Skorer.IOC.Container.Resolve<IScorer>());                
             newMatchForm.StartMatch(((ToolStripButton)sender).Text);            
             newMatchForm.MdiParent = this;
             newMatchForm.Show();
