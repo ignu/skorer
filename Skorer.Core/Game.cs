@@ -10,6 +10,7 @@ namespace Skorer.Core
     [System.Diagnostics.DebuggerDisplay("[{ID}] {Name}")]
     public class Game : Entity<int>
     {        
+
         public virtual void Prepare() {}
 
         public virtual string Name { get; set; }

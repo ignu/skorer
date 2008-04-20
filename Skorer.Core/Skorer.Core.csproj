@@ -90,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity.cs" />
+    <Compile Include="EntitySelectedEventArgs.cs" />
+    <Compile Include="EntityUpdatedEventArgs.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameEvent.cs" />
     <Compile Include="Match.cs" />

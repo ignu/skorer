@@ -5,15 +5,16 @@ using System.Text;
 using NUnit.Framework;
 using Skorer.Core;
 using Skorer.Services;
+using Moq;
 
 namespace Skorer.Tests
 {
     [TestFixture]
-    public class Tests
+    public class CarcassonneTests : GameFactoryTestsBase
     {
         private Game _GetGame()
         {
-            return new GameFactory().LoadGame("Carcassonne");
+            return _GameFactory.LoadGame("Carcassonne");
         }
 
         [Test]
@@ -25,12 +26,21 @@ namespace Skorer.Tests
         }
 
         [Test]
+        public void Will_Sync_With_Database()
+        {
+            Game game = _GetGame();
+            _GameEventRepositoryMock
+                .Expect(g => g.SaveOrUpdate(It.IsAny<GameEvent>()))
+                .Returns(game.GetEvents()[0]);
+        }
+
+        [Test]
         public void CanScoreCity()
         {            
             Player Megatron = new Player() { FirstName = "Megatron"  };
             Player Optimus = new Player() { FirstName = "Optimus" };
             
-            Scorer scorer = new  ScorerFactory(new GameFactory()).GetScorerFor("Carcassonne");
+            Scorer scorer = new  ScorerFactory(_GameFactory, _MatchRepositoryMock.Object, _MatchEventRepositoryMock.Object).GetScorerFor("Carcassonne");
             
             scorer.AddParticipant(Megatron).AddParticipant(Optimus);
             

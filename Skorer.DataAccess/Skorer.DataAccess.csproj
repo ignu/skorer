@@ -66,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameEventRepository.cs" />
+    <Compile Include="MatchEventRepository.cs" />
+    <Compile Include="MatchRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="GameRepository.cs" />
     <Compile Include="NHibernateSessionManager.cs" />

@@ -3,11 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Skorer.Core;
+using Skorer.DataAccess;
 
 namespace Skorer.Services
 {
-    public class Scorer
+    public interface IScorer
     {
+        List<MatchEvent> MatchEvents { get; }
+        Scorer.Round PlayerRound(Player player);
+        Scorer.Round CurrentRound { get; }
+        List<Player> Players { get; }
+        List<MatchEvent> PlayerEventPerRound(int round, Player player);
+        int GetPlayerScore(Player player);
+        void LoadGame(string gameName);
+        Scorer AddParticipant(Player player);
+        Game Game { get; }
+        void AddEvent(GameEvent gameEvent, Player player, int quantity);
+        void AddEvent(string eventName, Player player, int quantity);
+        void Save();
+        void LoadExistingMatch(int matchID);
+    }
+
+    public class Scorer : IScorer
+    {
+        public List<MatchEvent> MatchEvents
+        {
+            get
+            {
+                return _Match.Events;
+            }
+        }
         #region Round
 
         public class Round
@@ -15,7 +40,7 @@ namespace Skorer.Services
             Scorer _Scorer;
             int _RoundNumber;
             Player _Player = null;
-
+            
             public int RoundNumber
             {
                 get
@@ -103,6 +128,9 @@ namespace Skorer.Services
         Game _Game;
         Match _Match;
         IGameFactory _GameFactory;
+        IMatchRepository _MatchRepository;
+        IMatchEventRepository _MatchEventRepository;
+
         List<GameEvent> _GameEvents = new List<GameEvent>();
         Dictionary<Player, int> playerRounds;
         
@@ -110,7 +138,7 @@ namespace Skorer.Services
         {
             return new Round(playerRounds[player], this, player);
         }
-
+        
         public Round CurrentRound
         {
             get
@@ -144,9 +172,15 @@ namespace Skorer.Services
             return rv;
         }
 
-        public Scorer(IGameFactory gameFactory)
+        
+        public Scorer(IGameFactory gameFactory, 
+            IMatchRepository matchRepository, 
+            IMatchEventRepository eventRepository)
         {
             _GameFactory = gameFactory;
+            _MatchEventRepository = eventRepository;
+            _MatchRepository = matchRepository;
+            
         }
 
         public void LoadGame(string gameName)
@@ -158,7 +192,7 @@ namespace Skorer.Services
         }
 
         public Scorer AddParticipant(Player player)
-        {
+        {            
             _Match.Players.Add(player);
             if (Game.DistinctPlayerRounds)
                 playerRounds.Add(player, _Round);
@@ -208,7 +242,16 @@ namespace Skorer.Services
             AddEvent(gameEvent, player, quantity);
         }
 
+        public void Save()
+        {
+            _MatchRepository.Save(this._Match);            
+        }
 
+        public void LoadExistingMatch(int matchID)
+        {
+            
+
+        }
         
     }
 }

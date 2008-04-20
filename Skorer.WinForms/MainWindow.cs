@@ -45,10 +45,11 @@ namespace Skorer.WinForms
         void toolStripItem_Click(object sender, EventArgs e)
         {
             MatchForm newMatchForm = (MatchForm)Skorer.IOC.Container.Resolve<IMatchView>();
-            newMatchForm.CurrentGame = _GameRepository.GetFirst();
-            newMatchForm.Text = newMatchForm.CurrentGame.Name;
+            newMatchForm.StartMatch(((ToolStripButton)sender).Text);            
             newMatchForm.MdiParent = this;
             newMatchForm.Show();
         }
+
+        
     }
 }

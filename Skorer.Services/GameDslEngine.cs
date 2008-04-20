@@ -14,7 +14,9 @@ namespace Skorer.Services
         {
             pipeline.Insert(1, new AnonymousBaseClassCompilerStep(typeof(Game),
                 "Prepare",
-                "Skorer.Core"));
+                "Skorer.Core"
+                ));
+                
         }
     }
 }

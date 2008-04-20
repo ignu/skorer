@@ -32,7 +32,7 @@ namespace Skorer.DataAccess
             T SaveOrUpdateCopy(T entity);
             void Update(T entity);
             void Delete(T entity);
-            void Evict(T entity);
+            void Evict(T entity);            
         }
 
         public class Repository<T, IdT> : IRepository<T, IdT> where T : Entity<IdT>

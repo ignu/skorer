@@ -16,7 +16,7 @@ namespace Skorer.Tests.Controllers
     public class MatchControllerTests
     {
         MatchController _Controller;
-        Mock<IRepository<Match, int>> _MatchRepositoryMock;
+        Mock<IMatchRepository> _MatchRepositoryMock;
         Mock<IRepository<Game, int>> _GameRepositoryMock;
         Mock<IRepository<Player, int>> _PlayerRepositoryMock;
 
@@ -24,7 +24,7 @@ namespace Skorer.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            _MatchRepositoryMock = new Mock<IRepository<Match, int>>();
+            _MatchRepositoryMock = new Mock<IMatchRepository>();
             _GameRepositoryMock = new Mock<IRepository<Game, int>>();
             _PlayerRepositoryMock = new Mock<IRepository<Player, int>>();
             _Controller = new MatchController(_MatchRepositoryMock.Object, _GameRepositoryMock.Object, _PlayerRepositoryMock.Object);
