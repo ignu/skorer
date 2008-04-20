@@ -7,7 +7,7 @@ using Skorer.IOC;
 namespace Skorer.Tests.Repository
 {
     [TestFixture]
-    public class MatchTests : RepositoryTestBase<IRepository<Match, int>>
+    public class MatchTests : RepositoryTestBase<IMatchRepository>
     {
         [Test]
         public void CanSaveAndRetrieveMatch()

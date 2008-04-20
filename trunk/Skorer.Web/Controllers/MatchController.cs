@@ -8,11 +8,11 @@ namespace Skorer.Web.Controllers
     [Layout("default")]
     public class MatchController : BaseController
     {
-        IRepository<Match, int> _MatchRepository;
+        IMatchRepository _MatchRepository;
         IRepository<Game, int> _GameRepository;
         IRepository<Player, int> _PlayerRepository;
 
-        public MatchController(IRepository<Match, int> matchRepository, 
+        public MatchController(IMatchRepository matchRepository, 
             IRepository<Game, int> gameRepository,
             IRepository<Player, int> playerRepository
             )

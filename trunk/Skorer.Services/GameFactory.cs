@@ -6,9 +6,10 @@ using System.IO;
 using System.Reflection;
 using Rhino.DSL;
 using Skorer.Core;
+using Skorer.DataAccess;
 
 namespace Skorer.Services
-{
+{    
     public interface IGameFactory
     {
         Game LoadGame(string gameName);
@@ -18,8 +19,11 @@ namespace Skorer.Services
     {
         DslFactory _Factory = new DslFactory();
 
-        public GameFactory()
+        IGameConfigurationPersister _GameConfigurationPersister;
+
+        public GameFactory(IGameConfigurationPersister gameConfigurationPersister)
         {
+            _GameConfigurationPersister = gameConfigurationPersister;
             _Factory.BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             _Factory.Register<Game>(new GameDslEngine());
         }
@@ -29,7 +33,10 @@ namespace Skorer.Services
             string fileName = "GameDefinitions\\" + gameName + ".boo";
             Game rv = _Factory.Create<Game>(fileName);
             rv.Prepare();
+            _GameConfigurationPersister.SyncGame(rv);            
             return rv;
         }
+        
+        
     }
 }

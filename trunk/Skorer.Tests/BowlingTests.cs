@@ -1,20 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using Skorer.Core;
 using Skorer.Services;
+using Skorer.DataAccess;
+using Moq;
 
 namespace Skorer.Tests
 {
-    [TestFixture]
-    public class BowlingTests
+    public class GameFactoryTestsBase
     {
+        protected IGameFactory _GameFactory;
+        protected Mock<IGameRepository> _GameRepositoryMock;
+        protected Mock<IGameEventRepository> _GameEventRepositoryMock;
+        protected Mock<IGameConfigurationPersister> _GameConfigurationPersisterMock;
+        protected Mock<IMatchRepository> _MatchRepositoryMock = new Mock<IMatchRepository>();
+        protected Mock<IMatchEventRepository> _MatchEventRepositoryMock = new Mock<IMatchEventRepository>();
+
+        [SetUp]
+        public virtual void TestSetup()
+        {            
+            _GameRepositoryMock = new Mock<IGameRepository>();
+            _GameEventRepositoryMock = new Mock<IGameEventRepository>();
+            _GameConfigurationPersisterMock = new Mock<IGameConfigurationPersister>();
+            _GameFactory = new GameFactory(_GameConfigurationPersisterMock.Object);
+            _GameConfigurationPersisterMock.Expect(g => g.SyncGame(It.IsAny<Game>()));
+        }
+        
+    }
+    [TestFixture]
+    public class BowlingTests : GameFactoryTestsBase
+    {
+        
         [Test]
         public void CanLoadGame()
-        {
-            Game game = new GameFactory().LoadGame("Bowling");
+        {                        
+            Game game = _GameFactory.LoadGame("Bowling");            
             Assert.AreEqual(game.Name, "Bowling");
             Assert.Greater(game.GetEvents().Count, 0);
         }
@@ -23,9 +43,8 @@ namespace Skorer.Tests
         public void CanHandleSpare()
         {
             Player Megatron = new Player() { FirstName = "Megatron" };
-            Player Optimus = new Player() { FirstName = "Optimus" };
-
-            Scorer scorer = new ScorerFactory(new GameFactory()).GetScorerFor("Bowling");            
+            Player Optimus = new Player() { FirstName = "Optimus" };            
+            Scorer scorer = new ScorerFactory(_GameFactory, _MatchRepositoryMock.Object, _MatchEventRepositoryMock.Object).GetScorerFor("Bowling");            
             scorer.AddParticipant(Megatron).AddParticipant(Optimus);
             GameEvent throwEvent = scorer.Game.GetEvents().Find(m => m.Name == "Throw");
             scorer.AddEvent(throwEvent, Megatron, 4);

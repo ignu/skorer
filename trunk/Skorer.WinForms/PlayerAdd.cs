@@ -11,6 +11,7 @@ using Skorer.DataAccess;
 
 namespace Skorer.WinForms
 {
+    
     public interface IAddPlayerView
     {
         
@@ -18,6 +19,14 @@ namespace Skorer.WinForms
     
     public partial class PlayerAdd : Form, IAddPlayerView
     {
+        public event EntitySelectedEventHander<Player> PlayerSelected;
+
+        public virtual void OnPlayerSelected(EntitySelectedEventArgs<Player> ea)
+        {
+            if (PlayerSelected != null)
+                PlayerSelected(null/*this*/, ea);
+        }
+        
         IPlayerRepository _PlayerRepository;
 
         public PlayerAdd(IPlayerRepository playerRepository)
@@ -40,6 +49,13 @@ namespace Skorer.WinForms
         private void searchButton_Click(object sender, EventArgs e)
         {
             playerListBox.DataSource = _PlayerRepository.Find(firstNameTextBox.Text, lastNameTextBox.Text);
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            Player selectedPlayer = ((Player)playerListBox.SelectedValue);
+            OnPlayerSelected(new EntitySelectedEventArgs<Player>(selectedPlayer));
+            
         }
     }
 }

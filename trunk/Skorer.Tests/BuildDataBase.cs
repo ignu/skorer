@@ -26,7 +26,7 @@ namespace Skorer.Tests
         [Test]
         public void AddData()
         {
-            _AddGame();
+            _AddGames();
             _AddPlayers();
         }
 
@@ -36,13 +36,16 @@ namespace Skorer.Tests
                             new Player { FirstName = "Optimus", LastName="Prime" });
             Container.Resolve<IRepository<Player, int>>().Save(
                             new Player { FirstName = "Mega", LastName="Tron" });
+ 
         }
 
-        private static void _AddGame()
+        private static void _AddGames()
         {
-            var Soccer = new Game { Name = "Soccer", DistinctPlayerRounds = false };
-            Soccer.Events.Add(new GameEvent { Name = "Goal", Points = 1, Game = Soccer });
-            Container.Resolve<IRepository<Game, int>>().Save(Soccer);
+            var newGame = new Game { Name = "Soccer"};
+            IRepository<Game, int> gameRepository = Container.Resolve<IRepository<Game, int>>();
+            gameRepository.Save(newGame);
+            newGame = new Game { Name = "Carcassonne"};
+            gameRepository.Save(newGame);
         }
     }
 }

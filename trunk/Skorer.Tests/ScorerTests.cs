@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Skorer.Core;
 using Skorer.Services;
 using Moq;
+using Skorer.DataAccess;
 
 namespace Skorer.Tests
 {
@@ -18,12 +19,14 @@ namespace Skorer.Tests
         {            
             Mock<Skorer.Services.IGameFactory> gameFactory = new Mock<Skorer.Services.IGameFactory>();
             Mock<Game> carc = new Mock<Game>();
+            Mock<IMatchRepository> matchRepository = new Mock<IMatchRepository>();
+            Mock<IMatchEventRepository> matchEventRepository = new Mock<IMatchEventRepository>();
 
             gameFactory.Expect(corer => corer.LoadGame("Carcassonne"))
                 .Returns(carc.Object);
-            
-            _Scorer = new Scorer(gameFactory.Object);
-            
+
+            _Scorer = new Scorer(gameFactory.Object, matchRepository.Object, matchEventRepository.Object);
+                        
             _Scorer.LoadGame("Carcassonne");
         }
 

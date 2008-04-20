@@ -6,6 +6,17 @@ using Skorer.IOC;
 
 namespace Skorer.Tests.Repository
 {
+
+    [TestFixture]
+    public class GameRepositoryTests : RepositoryTestBase<IGameRepository>
+    {
+        [Test]
+        public void CanGetByName()
+        {
+            Assert.AreEqual("Soccer",_Repository.GetByName("Soccer").Name);
+        }
+    }
+
     [TestFixture]
     public class PlayerRepositoryTests : RepositoryTestBase<IPlayerRepository>
     {
