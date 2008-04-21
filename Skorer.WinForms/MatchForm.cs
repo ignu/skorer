@@ -130,6 +130,11 @@ namespace Skorer.WinForms
         {
             PlayerForm.Show();
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _Scorer.Save();
+        }
         
     }
 }

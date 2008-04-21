@@ -12,11 +12,13 @@ namespace Skorer.Services
 {    
     public interface IGameFactory
     {
+        List<string> GetGames();
         Game LoadGame(string gameName);
     }
 
     public class GameFactory : IGameFactory
     {
+        private const string BASE_DIRECTORY = "GameDefinitions\\";
         DslFactory _Factory = new DslFactory();
 
         IGameConfigurationPersister _GameConfigurationPersister;
@@ -30,13 +32,29 @@ namespace Skorer.Services
 
         public Game LoadGame(string gameName)
         {
-            string fileName = "GameDefinitions\\" + gameName + ".boo";
+            string fileName = BASE_DIRECTORY + gameName + ".boo";
             Game rv = _Factory.Create<Game>(fileName);
             rv.Prepare();
             _GameConfigurationPersister.SyncGame(rv);            
             return rv;
         }
-        
+
+        public List<string> GetGames()
+        {
+            List<string> rv = new List<string>();
+            string directoryName = AppDomain.CurrentDomain.BaseDirectory + "\\" + BASE_DIRECTORY;
+
+            System.Diagnostics.Debug.Write(directoryName);
+
+            DirectoryInfo directoryInfo = new System.IO.DirectoryInfo(directoryName);
+
+            foreach (FileInfo fileInfo in directoryInfo.GetFiles())
+            {
+                rv.Add(fileInfo.Name.Replace(".boo", String.Empty));
+            }
+
+            return rv;
+        }
         
     }
 }
