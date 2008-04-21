@@ -110,6 +110,7 @@
     <Compile Include="CarcassonneTests.cs" />
     <Compile Include="Controllers\MatchControllerTests.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Integration\GameFactoryTests.cs" />
     <Compile Include="MatchTests.cs" />
     <Compile Include="Performance\PerformanceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

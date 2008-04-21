@@ -138,21 +138,22 @@
             this.newPlayerToolStripMenuItem1,
             this.saveToolStripMenuItem});
             this.newPlayerToolStripMenuItem.Name = "newPlayerToolStripMenuItem";
-            this.newPlayerToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.newPlayerToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.newPlayerToolStripMenuItem.Text = "Match";
             // 
             // newPlayerToolStripMenuItem1
             // 
             this.newPlayerToolStripMenuItem1.Name = "newPlayerToolStripMenuItem1";
-            this.newPlayerToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
+            this.newPlayerToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.newPlayerToolStripMenuItem1.Text = "New Player";
             this.newPlayerToolStripMenuItem1.Click += new System.EventHandler(this.newPlayerToolStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // MatchForm
             // 

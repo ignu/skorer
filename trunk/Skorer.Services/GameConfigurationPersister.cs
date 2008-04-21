@@ -29,6 +29,8 @@ namespace Skorer.Services
             else
                 _GameRepository.Save(game);
 
+            _GameRepository.Flush();
+
             foreach (GameEvent gameEvent in game.GetEvents())
             {
                 GameEvent eventToSave = gameEvent;
@@ -40,6 +42,7 @@ namespace Skorer.Services
 
                 _GameEventRepository.SaveOrUpdate(eventToSave);
             }
+            _GameEventRepository.Flush();
         }
     }
 }
