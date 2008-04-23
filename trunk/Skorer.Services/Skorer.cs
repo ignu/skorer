@@ -127,7 +127,7 @@ namespace Skorer.Services
 
         Game _Game;
         Match _Match;
-        IGameFactory _GameFactory;
+        IGameDataFactory _GameFactory;
         IMatchRepository _MatchRepository;
         IMatchEventRepository _MatchEventRepository;
 
@@ -173,7 +173,7 @@ namespace Skorer.Services
         }
 
         
-        public Scorer(IGameFactory gameFactory, 
+        public Scorer(IGameDataFactory gameFactory, 
             IMatchRepository matchRepository, 
             IMatchEventRepository eventRepository)
         {

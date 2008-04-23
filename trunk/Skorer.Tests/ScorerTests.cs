@@ -17,7 +17,7 @@ namespace Skorer.Tests
         [SetUp]
         public void SetUp()
         {            
-            Mock<Skorer.Services.IGameFactory> gameFactory = new Mock<Skorer.Services.IGameFactory>();
+            Mock<Skorer.Services.IGameDataFactory> gameFactory = new Mock<Skorer.Services.IGameDataFactory>();
             Mock<Game> carc = new Mock<Game>();
             Mock<IMatchRepository> matchRepository = new Mock<IMatchRepository>();
             Mock<IMatchEventRepository> matchEventRepository = new Mock<IMatchEventRepository>();

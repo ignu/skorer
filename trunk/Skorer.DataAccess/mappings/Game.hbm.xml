@@ -9,7 +9,7 @@
       <generator class="native" />
     </id>
 
-    <property name="Name" length="64" unique="true"/>
+    <property name="Name" />
     <property name="DistinctPlayerRounds" />
 
     <set name="Events" inverse="true" lazy="true" cascade="all">

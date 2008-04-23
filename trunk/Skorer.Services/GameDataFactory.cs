@@ -1,41 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Reflection;
 using Rhino.DSL;
 using Skorer.Core;
-using Skorer.DataAccess;
 
 namespace Skorer.Services
 {    
-    public interface IGameFactory
+    public interface IGameDataFactory
     {
         List<string> GetGames();
         Game LoadGame(string gameName);
     }
 
-    public class GameFactory : IGameFactory
+    public class GameDataFactory : IGameDataFactory
     {
         private const string BASE_DIRECTORY = "GameDefinitions\\";
         DslFactory _Factory = new DslFactory();
 
         IGameConfigurationPersister _GameConfigurationPersister;
 
-        public GameFactory(IGameConfigurationPersister gameConfigurationPersister)
+        public GameDataFactory(IGameConfigurationPersister gameConfigurationPersister)
         {
             _GameConfigurationPersister = gameConfigurationPersister;
             _Factory.BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            _Factory.Register<Game>(new GameDslEngine());
+            _Factory.Register<GameData>(new GameDataDslEngine());
         }
 
         public Game LoadGame(string gameName)
         {
             string fileName = BASE_DIRECTORY + gameName + ".boo";
-            Game rv = _Factory.Create<Game>(fileName);
-            rv.Prepare();
-            _GameConfigurationPersister.SyncGame(rv);            
+            GameData data = _Factory.Create<GameData>(fileName);
+            data.Prepare();
+            Game rv = _GameConfigurationPersister.SyncGame(data);            
             return rv;
         }
 

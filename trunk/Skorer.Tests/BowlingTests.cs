@@ -9,7 +9,7 @@ namespace Skorer.Tests
 {
     public class GameFactoryTestsBase
     {
-        protected IGameFactory _GameFactory;
+        protected IGameDataFactory _GameFactory;
         protected Mock<IGameRepository> _GameRepositoryMock;
         protected Mock<IGameEventRepository> _GameEventRepositoryMock;
         protected Mock<IGameConfigurationPersister> _GameConfigurationPersisterMock;
@@ -22,8 +22,8 @@ namespace Skorer.Tests
             _GameRepositoryMock = new Mock<IGameRepository>();
             _GameEventRepositoryMock = new Mock<IGameEventRepository>();
             _GameConfigurationPersisterMock = new Mock<IGameConfigurationPersister>();
-            _GameFactory = new GameFactory(_GameConfigurationPersisterMock.Object);
-            _GameConfigurationPersisterMock.Expect(g => g.SyncGame(It.IsAny<Game>()));
+            _GameFactory = new GameDataFactory(_GameConfigurationPersisterMock.Object);
+            _GameConfigurationPersisterMock.Expect(g => g.SyncGame(It.IsAny<GameData>()));
         }
         
     }

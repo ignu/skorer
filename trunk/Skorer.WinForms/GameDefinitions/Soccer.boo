@@ -1,3 +1,3 @@
 ﻿Name = "Soccer"
 DistinctPlayerRounds = false
-Events.Add(GameEvent(Name:"Goal"))
+AddEvent(GameEvent(Name:"Goal"))

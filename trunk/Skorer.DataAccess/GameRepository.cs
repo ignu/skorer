@@ -25,5 +25,6 @@ namespace Skorer.DataAccess
             criteria.Add(Expression.Eq("Name", name));
             return criteria.UniqueResult<Game>();
         }
+
     }
 }

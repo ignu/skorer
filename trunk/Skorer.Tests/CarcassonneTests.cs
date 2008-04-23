@@ -22,7 +22,7 @@ namespace Skorer.Tests
         {
             Game game = _GetGame();
             Assert.AreEqual(game.Name, "Carcassonne");
-            Assert.Greater(game.Events.Count, 0);
+            Assert.Greater(game.GetEvents().Count, 0);
         }
 
         [Test]

@@ -20,9 +20,10 @@ namespace Skorer.WinForms
     public partial class MainWindow : Form, IDefaultView
     {
         private IRepository<Game, int> _GameRepository;
-
-        public MainWindow(IRepository<Game, int> gameRepository)
+        private IGameDataFactory _GameDataFactory;
+        public MainWindow(IRepository<Game, int> gameRepository, IGameDataFactory gameDataFactory)
         {
+            _GameDataFactory = gameDataFactory;
             _GameRepository = gameRepository;
             InitializeComponent();
         }
@@ -30,9 +31,9 @@ namespace Skorer.WinForms
 
         private void _LoadMenuItems()
         {
-            foreach (Game game in _GameRepository.GetAll())
+            foreach (string gameName in _GameDataFactory.GetGames())
             {
-                var toolStripItem = new ToolStripButton(game.Name);
+                var toolStripItem = new ToolStripButton(gameName);
                 toolStripItem.Click += new EventHandler(toolStripItem_Click);
                 newGameToolStripMenuItem.DropDownItems.Add(toolStripItem);
             }
@@ -50,6 +51,11 @@ namespace Skorer.WinForms
             newMatchForm.StartMatch(((ToolStripButton)sender).Text);            
             newMatchForm.MdiParent = this;
             newMatchForm.Show();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
 
         
