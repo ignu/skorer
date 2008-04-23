@@ -25,8 +25,7 @@ namespace Skorer.Tests
 
         [Test]
         public void AddData()
-        {
-            _AddGames();
+        {            
             _AddPlayers();
         }
 
@@ -39,13 +38,5 @@ namespace Skorer.Tests
  
         }
 
-        private static void _AddGames()
-        {
-            var newGame = new Game { Name = "Soccer"};
-            IRepository<Game, int> gameRepository = Container.Resolve<IRepository<Game, int>>();
-            gameRepository.Save(newGame);
-            newGame = new Game { Name = "Carcassonne"};
-            gameRepository.Save(newGame);
-        }
     }
 }

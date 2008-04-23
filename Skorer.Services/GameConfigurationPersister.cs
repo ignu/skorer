@@ -6,7 +6,7 @@ namespace Skorer.Services
 {
     public interface IGameConfigurationPersister
     {
-        void SyncGame(Game game);
+        Game SyncGame(GameData gameData);
     }
 
     public class GameConfigurationPersister : IGameConfigurationPersister
@@ -20,29 +20,35 @@ namespace Skorer.Services
             _GameEventRepository = gameEventRepository;
         }
 
-        public void SyncGame(Game game)
+        public Game SyncGame(GameData gameData)
         {
-            Game existingGame = _GameRepository.GetByName(game.Name);
+            Game existingGame = _GameRepository.GetByName(gameData.Name);
+            if (existingGame == null)
+            {
+                existingGame = new Game();
+                existingGame.Name = gameData.Name;
+            }
 
-            if (existingGame != null && existingGame.ID > 0)
-                game = existingGame;
-            else
-                _GameRepository.Save(game);
-
+            existingGame.DistinctPlayerRounds = gameData.DistinctPlayerRounds;
+            _GameRepository.Save(existingGame);
             _GameRepository.Flush();
 
-            foreach (GameEvent gameEvent in game.GetEvents())
+
+            foreach (GameEvent gameEvent in gameData.GetEvents())
             {
                 GameEvent eventToSave = gameEvent;
-                GameEvent existingGameEvent = _GameEventRepository.GetByNameAndGame(gameEvent.Name, game);
+                GameEvent existingGameEvent = _GameEventRepository.GetByNameAndGame(gameEvent.Name, existingGame);
+                
                 if (existingGameEvent != null && existingGameEvent.ID > 0)
                     eventToSave = existingGameEvent;
 
-                gameEvent.Game = game;
-
-                _GameEventRepository.SaveOrUpdate(eventToSave);
+                existingGame.AddEvent(eventToSave);                
             }
+
+            _GameRepository.Save(existingGame);
             _GameEventRepository.Flush();
+
+            return existingGame;
         }
     }
 }

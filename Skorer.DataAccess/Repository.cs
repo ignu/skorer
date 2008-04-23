@@ -142,7 +142,7 @@ namespace Skorer.DataAccess
             /// </summary>
             virtual public T SaveOrUpdate(T entity)
             {
-                NHibernateSession.SaveOrUpdate(entity);
+                NHibernateSession.SaveOrUpdate(entity);                
                 return entity;
             }
 

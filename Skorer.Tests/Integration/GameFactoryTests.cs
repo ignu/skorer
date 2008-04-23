@@ -7,12 +7,12 @@ namespace Skorer.Tests.Integration
     [TestFixture]
     public class GameFactoryTests
     {
-        IGameFactory _GameFactory;
+        IGameDataFactory _GameFactory;
 
         [SetUp]
         public void Setup()
         {
-            _GameFactory = IOC.Container.Resolve<IGameFactory>();
+            _GameFactory = IOC.Container.Resolve<IGameDataFactory>();
         }
 
         [Test]

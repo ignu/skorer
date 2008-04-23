@@ -21,7 +21,7 @@ namespace Skorer.Tests.Repository
         public void GameHasEvents()
         {
             Game game = _Repository.GetFirst();
-            Assert.Greater(game.Events.Count, 0);
+            Assert.Greater(game.GetEvents().Count, 0);
         }
     }
 

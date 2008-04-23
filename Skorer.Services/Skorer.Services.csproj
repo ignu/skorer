@@ -55,6 +55,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdParty\Boo.Lang.Useful.dll</HintPath>
     </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Rhino.DSL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdParty\Rhino.DSL.dll</HintPath>
@@ -75,8 +79,8 @@
   <ItemGroup>
     <Compile Include="DataServiceBase.cs" />
     <Compile Include="GameConfigurationPersister.cs" />
-    <Compile Include="GameDslEngine.cs" />
-    <Compile Include="GameFactory.cs" />
+    <Compile Include="GameDataDslEngine.cs" />
+    <Compile Include="GameDataFactory.cs" />
     <Compile Include="PlayerServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScorerDslEngine.cs" />

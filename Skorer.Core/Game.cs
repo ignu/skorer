@@ -7,17 +7,12 @@ using Iesi.Collections.Generic;
 
 namespace Skorer.Core
 {
-    [System.Diagnostics.DebuggerDisplay("[{ID}] {Name}")]
-    public class Game : Entity<int>
-    {        
-
-        public virtual void Prepare() {}
-
+    public abstract class GameBase: Entity<int>
+    {
         public virtual string Name { get; set; }
         public virtual bool DistinctPlayerRounds { get; set; }
-        private ISet<GameEvent> _Events = new HashedSet<GameEvent>();
-        private List<GameEvent> _GameEventList;
 
+        protected List<GameEvent> _GameEventList;
         public virtual List<GameEvent> GetEvents()
         {
             if (_GameEventList == null)
@@ -28,14 +23,19 @@ namespace Skorer.Core
 
         public virtual void AddEvent(GameEvent eventToAdd)
         {
-            _Events.Add(eventToAdd);            
+            if (_Events == null)
+                _Events = new HashedSet<GameEvent>();
+            _GameEventList = null;
+            _Events.Add(eventToAdd);
         }
 
-        public virtual ISet<GameEvent> Events
-        {            
+        protected ISet<GameEvent> _Events;
+
+        protected virtual ISet<GameEvent> Events
+        {
             get
-            {                
-                return _Events;                
+            {
+                return _Events;
             }
             set
             {
@@ -43,11 +43,23 @@ namespace Skorer.Core
             }
         }
 
+
+
+    }
+    public class GameData : GameBase
+    {        
+        public virtual void Prepare() { }
+        
         public virtual void SetName(string name)
         {
             Name = name;
         }
+    
+    }
 
+    [System.Diagnostics.DebuggerDisplay("[{ID}] {Name}")]
+    public class Game : GameBase
+    {                                                                
         public override string ToString()
         {
             return Name;

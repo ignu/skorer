@@ -12,7 +12,7 @@ Component("NHibernateSessionManager", INHibernateSessionManager, NHibernateSessi
 Component("SessionManager", INHibernateSessionManager, NHibernateSessionManager)
 Component("Repository", IRepository, Repository)
 Component("Scorer", IScorer, Scorer)
-Component("GameFactory", IGameFactory, GameFactory)
+Component("GameDataFactory", IGameDataFactory, GameDataFactory)
 Component("DefaultView", IDefaultView, MainWindow)
 Component("MatchForm", IMatchView, MatchForm)
 Component("AddPlayerForm", IAddPlayerView, PlayerAdd)

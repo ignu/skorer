@@ -7,11 +7,11 @@ namespace Skorer.Services
     public class ScorerFactory
     {
         DslFactory _Factory = new DslFactory();
-        IGameFactory _GameFactory;
+        IGameDataFactory _GameFactory;
         IMatchRepository _MatchRepository;
         IMatchEventRepository _MatchEventRepository;
 
-        public ScorerFactory(IGameFactory gameFactory, IMatchRepository matchRepository, IMatchEventRepository matchEventRepository)
+        public ScorerFactory(IGameDataFactory gameFactory, IMatchRepository matchRepository, IMatchEventRepository matchEventRepository)
         {
             _Factory.BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             _Factory.Register<Scorer>(new ScorerDslEngine());
