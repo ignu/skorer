@@ -126,7 +126,6 @@
     <Compile Include="ScorerTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="GameDefinitions\Carcassonne.boo">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -164,6 +163,11 @@
       <Project>{173DC9F7-0418-4AC6-AF09-59A6DD1046B4}</Project>
       <Name>Skorer.Web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
