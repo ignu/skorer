@@ -4,6 +4,7 @@ using Skorer.Core;
 using Skorer.Services;
 using Skorer.DataAccess;
 using Moq;
+using Skorer.IOC;
 
 namespace Skorer.Tests
 {
@@ -23,7 +24,7 @@ namespace Skorer.Tests
             _GameEventRepositoryMock = new Mock<IGameEventRepository>();
             _GameConfigurationPersisterMock = new Mock<IGameConfigurationPersister>();
             _GameFactory = new GameDataFactory(_GameConfigurationPersisterMock.Object);
-            _GameConfigurationPersisterMock.Expect(g => g.SyncGame(It.IsAny<GameData>()));
+            //_GameConfigurationPersisterMock.Expect(g => g.SyncGame(It.IsAny<GameData>())).Returns(new GameData{ Name="Bowling", DistinctPlayerRounds=true});
         }
         
     }
@@ -44,7 +45,8 @@ namespace Skorer.Tests
         {
             Player Megatron = new Player() { FirstName = "Megatron" };
             Player Optimus = new Player() { FirstName = "Optimus" };            
-            Scorer scorer = new ScorerFactory(_GameFactory, _MatchRepositoryMock.Object, _MatchEventRepositoryMock.Object).GetScorerFor("Bowling");            
+            //Scorer scorer = new ScorerFactory(_GameFactory, _MatchRepositoryMock.Object, _MatchEventRepositoryMock.Object).GetScorerFor("Bowling");            
+            Scorer scorer = Container.Resolve<IScorerFactory>().GetScorerFor("Bowling");            
             scorer.AddParticipant(Megatron).AddParticipant(Optimus);
             GameEvent throwEvent = scorer.Game.GetEvents().Find(m => m.Name == "Throw");
             scorer.AddEvent(throwEvent, Megatron, 4);
