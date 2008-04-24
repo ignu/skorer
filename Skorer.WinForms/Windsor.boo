@@ -25,3 +25,4 @@ Component("MatchRepository", IMatchRepository, MatchRepository)
 
 Component("GameRepository", IGameRepository, GameRepository)
 Component("GameEventRepository", IGameEventRepository, GameEventRepository)
+Component("ScorerFactory", IScorerFactory, ScorerFactory)

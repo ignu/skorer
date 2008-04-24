@@ -4,7 +4,11 @@ using Skorer.DataAccess;
 
 namespace Skorer.Services
 {
-    public class ScorerFactory
+    public interface IScorerFactory
+    {
+        Scorer GetScorerFor(string gameName);
+    }
+    public class ScorerFactory : IScorerFactory
     {
         DslFactory _Factory = new DslFactory();
         IGameDataFactory _GameFactory;
