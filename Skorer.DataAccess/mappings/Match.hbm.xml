@@ -11,6 +11,11 @@
 
     <many-to-one name="Game" column="GameID" fetch="join"/>
     <property name="Date" />
+
+    <set name="Events" lazy="true" cascade="all" >
+      <key column="MatchEventID" />
+      <one-to-many class="MatchEvent"></one-to-many>
+    </set>
     
   </class>
 </hibernate-mapping>

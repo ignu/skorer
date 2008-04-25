@@ -15,6 +15,7 @@ namespace Skorer.WinForms
 
     public partial class MatchForm : Form, IMatchView
     {
+        private IScorerFactory _ScorerFactory;
         private IScorer _Scorer;
         IRepository<Game, int> _GameRepository;
 
@@ -43,15 +44,17 @@ namespace Skorer.WinForms
             PlayerList.ValueMember = "ID";                        
         }                            
 
-        public MatchForm(IRepository<Game, int> gameRepository, IScorer scorer)
+        public MatchForm(IRepository<Game, int> gameRepository, IScorerFactory scorerFactory)
         {                        
             _GameRepository = gameRepository;
-            _Scorer = scorer;
+            _ScorerFactory = scorerFactory;
+            
             InitializeComponent();
         }
 
         public void StartMatch(string gameName)
         {
+            _Scorer = _ScorerFactory.GetScorerFor(gameName);
             _Scorer.LoadGame(gameName);                        
         }
 
