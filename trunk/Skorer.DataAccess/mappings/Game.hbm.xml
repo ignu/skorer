@@ -12,7 +12,7 @@
     <property name="Name" />
     <property name="DistinctPlayerRounds" />
 
-    <set name="Events" inverse="true" lazy="true" cascade="all">
+    <set name="Events" lazy="true" cascade="all" >
       <key column="GameID" />
       <one-to-many class="GameEvent"></one-to-many>
     </set>

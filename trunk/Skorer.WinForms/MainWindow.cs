@@ -47,7 +47,7 @@ namespace Skorer.WinForms
         void toolStripItem_Click(object sender, EventArgs e)
         {
             MatchForm newMatchForm = new MatchForm(Skorer.IOC.Container.Resolve<IGameRepository>(),
-                Skorer.IOC.Container.Resolve<IScorer>());                
+                Skorer.IOC.Container.Resolve<IScorerFactory>());                
             newMatchForm.StartMatch(((ToolStripButton)sender).Text);            
             newMatchForm.MdiParent = this;
             newMatchForm.Show();

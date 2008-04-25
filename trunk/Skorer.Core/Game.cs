@@ -16,7 +16,7 @@ namespace Skorer.Core
         public virtual List<GameEvent> GetEvents()
         {
             if (_GameEventList == null)
-                _GameEventList = new List<GameEvent>(_Events);
+                _GameEventList = new List<GameEvent>(Events);
 
             return _GameEventList;
         }
