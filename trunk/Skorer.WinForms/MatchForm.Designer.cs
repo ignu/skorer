@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.QuantityTextBox = new System.Windows.Forms.TextBox();
             this.PlayerList = new System.Windows.Forms.ComboBox();
@@ -40,10 +41,19 @@
             this.newPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newPlayerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.matchEventBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gameEventDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roundDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.scoreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EventGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerScoreGrid)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.matchEventBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -106,12 +116,23 @@
             // 
             // EventGrid
             // 
+            this.EventGrid.AutoGenerateColumns = false;
             this.EventGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EventGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gameEventDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.roundDataGridViewTextBoxColumn,
+            this.scoreDataGridViewTextBoxColumn,
+            this.playerDataGridViewTextBoxColumn,
+            this.iDDataGridViewTextBoxColumn,
+            this.DeleteButton});
+            this.EventGrid.DataSource = this.matchEventBindingSource;
             this.EventGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.EventGrid.Location = new System.Drawing.Point(0, 148);
             this.EventGrid.Name = "EventGrid";
             this.EventGrid.Size = new System.Drawing.Size(866, 310);
             this.EventGrid.TabIndex = 4;
+            this.EventGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EventGrid_CellContentClick);
             // 
             // PlayerScoreGrid
             // 
@@ -144,16 +165,63 @@
             // newPlayerToolStripMenuItem1
             // 
             this.newPlayerToolStripMenuItem1.Name = "newPlayerToolStripMenuItem1";
-            this.newPlayerToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.newPlayerToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.newPlayerToolStripMenuItem1.Text = "New Player";
             this.newPlayerToolStripMenuItem1.Click += new System.EventHandler(this.newPlayerToolStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // matchEventBindingSource
+            // 
+            this.matchEventBindingSource.DataSource = typeof(Skorer.Core.MatchEvent);
+            // 
+            // gameEventDataGridViewTextBoxColumn
+            // 
+            this.gameEventDataGridViewTextBoxColumn.DataPropertyName = "GameEvent";
+            this.gameEventDataGridViewTextBoxColumn.HeaderText = "GameEvent";
+            this.gameEventDataGridViewTextBoxColumn.Name = "gameEventDataGridViewTextBoxColumn";
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // roundDataGridViewTextBoxColumn
+            // 
+            this.roundDataGridViewTextBoxColumn.DataPropertyName = "Round";
+            this.roundDataGridViewTextBoxColumn.HeaderText = "Round";
+            this.roundDataGridViewTextBoxColumn.Name = "roundDataGridViewTextBoxColumn";
+            // 
+            // scoreDataGridViewTextBoxColumn
+            // 
+            this.scoreDataGridViewTextBoxColumn.DataPropertyName = "Score";
+            this.scoreDataGridViewTextBoxColumn.HeaderText = "Score";
+            this.scoreDataGridViewTextBoxColumn.Name = "scoreDataGridViewTextBoxColumn";
+            // 
+            // playerDataGridViewTextBoxColumn
+            // 
+            this.playerDataGridViewTextBoxColumn.DataPropertyName = "Player";
+            this.playerDataGridViewTextBoxColumn.HeaderText = "Player";
+            this.playerDataGridViewTextBoxColumn.Name = "playerDataGridViewTextBoxColumn";
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.HeaderText = "Delete";
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Text = "Delete";
             // 
             // MatchForm
             // 
@@ -174,6 +242,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerScoreGrid)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.matchEventBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +262,13 @@
         private System.Windows.Forms.ToolStripMenuItem newPlayerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newPlayerToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gameEventDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roundDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn scoreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteButton;
+        private System.Windows.Forms.BindingSource matchEventBindingSource;
     }
 }

@@ -138,6 +138,11 @@ namespace Skorer.WinForms
         {
             _Scorer.Save();
         }
+
+        private void EventGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+   
+        }
         
     }
 }
