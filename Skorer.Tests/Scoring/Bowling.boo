@@ -13,9 +13,9 @@ frame.DeletePlayerEventsByEventName(bowler, "SpareBonus")
 
 # Doesn't work
 # TODO: figure out how to inject this method, as it would make our main algorithm much more readable
-#def GotStrike(Player bowler, Round round) as bool:
-#	return round.GetEventsFor(bowler).Count == 1 && round.GetScoreFor(bowler) == 10
-#end	
+def GotStrike(bowler as Player, round as duck) as bool:
+	return round.GetEventsFor(bowler).Count == 1 && round.GetScoreFor(bowler) == 10
+end	
 
 matchEvent.Score = matchEvent.Quantity * matchEvent.GameEvent.Points
 	
@@ -25,6 +25,8 @@ if frame.GetScoreFor(bowler) == 10:
 		
 	elif frame.GetEventsFor(bowler).Count == 2:		
 		AddEvent("SpareBonus", bowler, 0) 
+
+GotStrike(bowler, frame.Current)
 		
 if frame.Previous != null and frame.Previous.GetScoreFor(bowler) == 10:
 	if frame.Previous.FindPlayerEventsByEventName(bowler, "StrikeBonus") != null and frame.Previous.FindPlayerEventsByEventName(bowler, "StrikeBonus").Count > 0:		
@@ -36,5 +38,3 @@ if frame.Previous != null and frame.Previous.GetScoreFor(bowler) == 10:
 	
 if frame.GetEventsFor(bowler).Count >= 2:
 	NewRound(bowler)
-
-
