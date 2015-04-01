@@ -1,0 +1,1 @@
+Generic score keeping framework written in C#, using Boo DSLs.
